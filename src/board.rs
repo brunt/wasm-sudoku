@@ -19,9 +19,9 @@ pub fn show_board(board: &Board) -> Vec<usize> {
     output
 }
 
-#[wasm_bindgen]
+//#[wasm_bindgen]
 pub fn solve_board(board: &mut Board) -> Vec<usize> {
-    //recursion?
+    board.find_solution(0);
     show_board(board)
 }
 
@@ -86,6 +86,27 @@ impl Board {
 
     fn clear_cell(&mut self, row: usize, col: usize) {
         self.squares[row][col] = 0 as usize;
+    }
+
+    pub fn find_solution(&mut self, index: usize) -> bool {
+        let row = index / 9;
+        let col = index % 9;
+
+        if index == 81 {
+            return true;
+        }
+        if self.is_filled(row, col) {
+            return self.find_solution(index + 1)
+        }
+        let options = self.get_options_for_cell(row, col);
+        for i in options.iter() {
+            self.squares[row][col] = i.to_owned();
+            if self.find_solution(index + 1) {
+                return true;
+            }
+        }
+        self.clear_cell(row, col);
+        false
     }
 }
 
@@ -158,5 +179,33 @@ mod tests {
         let options = board.get_options_for_cell(1, 3);
         assert_eq!(options.contains(&9), true);
         assert_eq!(options.contains(&0), false);
+    }
+
+    #[test]
+    fn test_find_solution() {
+        let cell_vals = vec![
+            2,9,6,0,0,0,5,7,4,
+            5,8,4,0,0,0,6,1,3,
+            7,1,3,0,0,0,2,8,9,
+            6,2,5,8,9,7,3,4,1,
+            9,3,1,4,2,6,8,5,7,
+            4,7,8,5,3,1,9,2,6,
+            1,6,7,2,5,3,4,9,8,
+            8,5,9,7,6,4,1,3,2,
+            3,4,2,1,8,9,7,6,5
+        ];
+        let solution =  vec![
+            2,9,6,3,1,8,5,7,4,
+            5,8,4,9,7,2,6,1,3,
+            7,1,3,6,4,5,2,8,9,
+            6,2,5,8,9,7,3,4,1,
+            9,3,1,4,2,6,8,5,7,
+            4,7,8,5,3,1,9,2,6,
+            1,6,7,2,5,3,4,9,8,
+            8,5,9,7,6,4,1,3,2,
+            3,4,2,1,8,9,7,6,5
+        ];
+        let mut board = Board::new_with_values(cell_vals).unwrap();
+        assert_eq!(solve_board(&mut board), solution)
     }
 }
