@@ -2,6 +2,8 @@
 
 Solve any sudoku puzzle using javascript and webassembly.
 
+[DEMO!](https://brunt.github.io)
+
 ### Building:
 * have rust, wasm-pack, npm installed
 * from top-level folder, `wasm-pack build` to compile rust to wasm
