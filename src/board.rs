@@ -1,9 +1,8 @@
 use itertools::Itertools;
 use std::iter::Iterator;
 use wasm_bindgen::prelude::*;
-use std::collections::HashSet;
+use std::collections::BTreeSet;
 
-#[derive(Clone)]
 pub struct Board {
     pub squares: Vec<Vec<u32>>
 }
@@ -13,27 +12,17 @@ pub struct Board {
 pub fn solve_from_array(input: Vec<u32>) -> Vec<u32> {
     let mut board = Board::new_with_values(input).unwrap_or(Board::new());
     board.find_solution(0);
-    show_board(&board)
-}
-
-pub fn show_board(board: &Board) -> Vec<u32> {
-    let mut output = Vec::with_capacity(81);
-    for v in &board.squares {
-        for s in v {
-            output.push(s.clone());
-        }
-    }
-    output
+    board.show()
 }
 
 impl Board {
-    pub fn new() -> Board {
+    fn new() -> Board {
         Board {
             squares: vec![vec![0; 9]; 9],
         }
     }
 
-    pub fn new_with_values(input: Vec<u32>) -> Result<Board, &'static str> {
+    fn new_with_values(input: Vec<u32>) -> Result<Board, &'static str> {
         if input.len() != 81 {
             return Err("invalid input length");
         }
@@ -44,15 +33,15 @@ impl Board {
         Ok(board)
     }
 
-    pub fn is_filled(&self, row: usize, column: usize) -> bool {
+    fn is_filled(&self, row: usize, column: usize) -> bool {
         if self.squares[row][column] == 0 {
             return false;
         }
         true
     }
 
-    pub fn get_options_for_cell(&self, row: usize, col: usize) -> HashSet<u32> {
-        let mut options = HashSet::with_capacity(9);
+    fn get_options_for_cell(&self, row: usize, col: usize) -> BTreeSet<u32> {
+        let mut options = BTreeSet::new();
         for i in 1..10 as u32 {
             options.insert(i);
         }
@@ -62,19 +51,19 @@ impl Board {
         options
     }
 
-    pub fn remove_column_options(&self, col: usize, options: &mut HashSet<u32>) {
+    fn remove_column_options(&self, col: usize, options: &mut BTreeSet<u32>) {
         for i in 0..9 {
             options.remove(&self.squares[i][col]);
         }
     }
 
-    pub fn remove_row_options(&self, row: usize, options: &mut HashSet<u32>) {
+    fn remove_row_options(&self, row: usize, options: &mut BTreeSet<u32>) {
         for i in 0..9 {
             options.remove(&self.squares[row][i]);
         }
     }
 
-    pub fn remove_box_options(&self, row: usize, col: usize, options: &mut HashSet<u32>) {
+    fn remove_box_options(&self, row: usize, col: usize, options: &mut BTreeSet<u32>) {
         let box_row = row - row % 3 as usize;
         let box_col = col - col % 3 as usize;
         for i in 0..3 {
@@ -88,7 +77,7 @@ impl Board {
         self.squares[row][col] = 0 as u32;
     }
 
-    pub fn find_solution(&mut self, index: usize) -> bool {
+    fn find_solution(&mut self, index: usize) -> bool {
         if index == 81 {
             return true;
         }
@@ -108,6 +97,10 @@ impl Board {
         }
         self.clear_cell(row, col);
         false
+    }
+
+    fn show(&self) -> Vec<u32> {
+        self.squares.to_owned().into_iter().flatten().collect()
     }
 }
 
@@ -160,7 +153,7 @@ mod tests {
             input.push(i);
         }
         let board = Board::new_with_values(input.clone()).unwrap();
-        assert_eq!(show_board(&board), input)
+        assert_eq!(board.show(), input)
     }
 
     #[test]
