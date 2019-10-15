@@ -26,8 +26,14 @@
       cursor: pointer;
       margin-bottom: 1em;
     }
+    #solve {
+      font-size: 1em;
+      font-weight: bold;
+      margin: 1em;
+    }
     input {
-      appearance: textfield;
+      width: 2em;
+      height: 2em;
     }
   </style>
 </head>
@@ -37,143 +43,143 @@
   <div id="puzzleInput" class="content-center">
 <table style="background-color:black;"><tbody><tr>
   <td><table style="background-color:gray;"><tbody><tr>
-    <td><input type="number" max="9" min="1" size="1" id="A1" value=""></td>
-    <td><input type="number" max="9" min="1" size="1" id="A2" value=""></td>
-    <td><input type="number" max="9" min="1" size="1" id="A3" value=""></td>
+    <td><input type="number" max="9" min="1" id="A1" value=""></td>
+    <td><input type="number" max="9" min="1" id="A2" value=""></td>
+    <td><input type="number" max="9" min="1" id="A3" value=""></td>
   </tr>
   <tr>
-    <td><input type="number" max="9" min="1" size="1" id="B1" value=""></td>
-    <td><input type="number" max="9" min="1" size="1" id="B2" value=""></td>
-    <td><input type="number" max="9" min="1" size="1" id="B3" value=""></td>
+    <td><input type="number" max="9" min="1" id="B1" value=""></td>
+    <td><input type="number" max="9" min="1" id="B2" value=""></td>
+    <td><input type="number" max="9" min="1" id="B3" value=""></td>
   </tr>
   <tr>
-    <td><input type="number" max="9" min="1" size="1" id="C1" value=""></td>
-    <td><input type="number" max="9" min="1" size="1" id="C2" value=""></td>
-    <td><input type="number" max="9" min="1" size="1" id="C3" value=""></td>
+    <td><input type="number" max="9" min="1" id="C1" value=""></td>
+    <td><input type="number" max="9" min="1" id="C2" value=""></td>
+    <td><input type="number" max="9" min="1" id="C3" value=""></td>
   </tr>
   </tbody></table></td><td><table style="background-color:gray;"><tbody><tr>
-  <td><input type="number" max="9" min="1" size="1" id="A4" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="A5" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="A6" value=""></td>
+  <td><input type="number" max="9" min="1" id="A4" value=""></td>
+  <td><input type="number" max="9" min="1" id="A5" value=""></td>
+  <td><input type="number" max="9" min="1" id="A6" value=""></td>
 </tr>
 <tr>
-  <td><input type="number" max="9" min="1" size="1" id="B4" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="B5" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="B6" value=""></td>
+  <td><input type="number" max="9" min="1" id="B4" value=""></td>
+  <td><input type="number" max="9" min="1" id="B5" value=""></td>
+  <td><input type="number" max="9" min="1" id="B6" value=""></td>
 </tr>
 <tr>
-  <td><input type="number" max="9" min="1" size="1" id="C4" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="C5" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="C6" value=""></td>
+  <td><input type="number" max="9" min="1" id="C4" value=""></td>
+  <td><input type="number" max="9" min="1" id="C5" value=""></td>
+  <td><input type="number" max="9" min="1" id="C6" value=""></td>
 </tr>
 </tbody></table></td><td><table style="background-color:gray;"><tbody><tr>
-  <td><input type="number" max="9" min="1" size="1" id="A7" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="A8" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="A9" value=""></td>
+  <td><input type="number" max="9" min="1" id="A7" value=""></td>
+  <td><input type="number" max="9" min="1" id="A8" value=""></td>
+  <td><input type="number" max="9" min="1" id="A9" value=""></td>
 </tr>
 <tr>
-  <td><input type="number" max="9" min="1" size="1" id="B7" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="B8" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="B9" value=""></td>
+  <td><input type="number" max="9" min="1" id="B7" value=""></td>
+  <td><input type="number" max="9" min="1" id="B8" value=""></td>
+  <td><input type="number" max="9" min="1" id="B9" value=""></td>
 </tr>
 <tr>
-  <td><input type="number" max="9" min="1" size="1" id="C7" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="C8" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="C9" value=""></td>
+  <td><input type="number" max="9" min="1" id="C7" value=""></td>
+  <td><input type="number" max="9" min="1" id="C8" value=""></td>
+  <td><input type="number" max="9" min="1" id="C9" value=""></td>
 </tr>
 </tbody></table></td></tr>
 <tr>
   <td><table style="background-color:gray;"><tbody><tr>
-    <td><input type="number" max="9" min="1" size="1" id="D1" value=""></td>
-    <td><input type="number" max="9" min="1" size="1" id="D2" value=""></td>
-    <td><input type="number" max="9" min="1" size="1" id="D3" value=""></td>
+    <td><input type="number" max="9" min="1" id="D1" value=""></td>
+    <td><input type="number" max="9" min="1" id="D2" value=""></td>
+    <td><input type="number" max="9" min="1" id="D3" value=""></td>
   </tr>
   <tr>
-    <td><input type="number" max="9" min="1" size="1" id="E1" value=""></td>
-    <td><input type="number" max="9" min="1" size="1" id="E2" value=""></td>
-    <td><input type="number" max="9" min="1" size="1" id="E3" value=""></td>
+    <td><input type="number" max="9" min="1" id="E1" value=""></td>
+    <td><input type="number" max="9" min="1" id="E2" value=""></td>
+    <td><input type="number" max="9" min="1" id="E3" value=""></td>
   </tr>
   <tr>
-    <td><input type="number" max="9" min="1" size="1" id="F1" value=""></td>
-    <td><input type="number" max="9" min="1" size="1" id="F2" value=""></td>
-    <td><input type="number" max="9" min="1" size="1" id="F3" value=""></td>
+    <td><input type="number" max="9" min="1" id="F1" value=""></td>
+    <td><input type="number" max="9" min="1" id="F2" value=""></td>
+    <td><input type="number" max="9" min="1" id="F3" value=""></td>
   </tr>
   </tbody></table></td><td><table style="background-color:gray;"><tbody><tr>
-  <td><input type="number" max="9" min="1" size="1" id="D4" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="D5" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="D6" value=""></td>
+  <td><input type="number" max="9" min="1" id="D4" value=""></td>
+  <td><input type="number" max="9" min="1" id="D5" value=""></td>
+  <td><input type="number" max="9" min="1" id="D6" value=""></td>
 </tr>
 <tr>
-  <td><input type="number" max="9" min="1" size="1" id="E4" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="E5" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="E6" value=""></td>
+  <td><input type="number" max="9" min="1" id="E4" value=""></td>
+  <td><input type="number" max="9" min="1" id="E5" value=""></td>
+  <td><input type="number" max="9" min="1" id="E6" value=""></td>
 </tr>
 <tr>
-  <td><input type="number" max="9" min="1" size="1" id="F4" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="F5" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="F6" value=""></td>
+  <td><input type="number" max="9" min="1" id="F4" value=""></td>
+  <td><input type="number" max="9" min="1" id="F5" value=""></td>
+  <td><input type="number" max="9" min="1" id="F6" value=""></td>
 </tr>
 </tbody></table></td><td><table style="background-color:gray;"><tbody><tr>
-  <td><input type="number" max="9" min="1" size="1" id="D7" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="D8" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="D9" value=""></td>
+  <td><input type="number" max="9" min="1" id="D7" value=""></td>
+  <td><input type="number" max="9" min="1" id="D8" value=""></td>
+  <td><input type="number" max="9" min="1" id="D9" value=""></td>
 </tr>
 <tr>
-  <td><input type="number" max="9" min="1" size="1" id="E7" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="E8" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="E9" value=""></td>
+  <td><input type="number" max="9" min="1" id="E7" value=""></td>
+  <td><input type="number" max="9" min="1" id="E8" value=""></td>
+  <td><input type="number" max="9" min="1" id="E9" value=""></td>
 </tr>
 <tr>
-  <td><input type="number" max="9" min="1" size="1" id="F7" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="F8" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="F9" value=""></td>
+  <td><input type="number" max="9" min="1" id="F7" value=""></td>
+  <td><input type="number" max="9" min="1" id="F8" value=""></td>
+  <td><input type="number" max="9" min="1" id="F9" value=""></td>
 </tr>
 </tbody></table></td></tr>
 <tr>
   <td><table style="background-color:gray;"><tbody><tr>
-    <td><input type="number" max="9" min="1" size="1" id="G1" value=""></td>
-    <td><input type="number" max="9" min="1" size="1" id="G2" value=""></td>
-    <td><input type="number" max="9" min="1" size="1" id="G3" value=""></td>
+    <td><input type="number" max="9" min="1" id="G1" value=""></td>
+    <td><input type="number" max="9" min="1" id="G2" value=""></td>
+    <td><input type="number" max="9" min="1" id="G3" value=""></td>
   </tr>
   <tr>
-    <td><input type="number" max="9" min="1" size="1" id="H1" value=""></td>
-    <td><input type="number" max="9" min="1" size="1" id="H2" value=""></td>
-    <td><input type="number" max="9" min="1" size="1" id="H3" value=""></td>
+    <td><input type="number" max="9" min="1" id="H1" value=""></td>
+    <td><input type="number" max="9" min="1" id="H2" value=""></td>
+    <td><input type="number" max="9" min="1" id="H3" value=""></td>
   </tr>
   <tr>
-    <td><input type="number" max="9" min="1" size="1" id="I1" value=""></td>
-    <td><input type="number" max="9" min="1" size="1" id="I2" value=""></td>
-    <td><input type="number" max="9" min="1" size="1" id="I3" value=""></td>
+    <td><input type="number" max="9" min="1" id="I1" value=""></td>
+    <td><input type="number" max="9" min="1" id="I2" value=""></td>
+    <td><input type="number" max="9" min="1" id="I3" value=""></td>
   </tr>
   </tbody></table></td><td><table style="background-color:gray;"><tbody><tr>
-  <td><input type="number" max="9" min="1" size="1" id="G4" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="G5" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="G6" value=""></td>
+  <td><input type="number" max="9" min="1" id="G4" value=""></td>
+  <td><input type="number" max="9" min="1" id="G5" value=""></td>
+  <td><input type="number" max="9" min="1" id="G6" value=""></td>
 </tr>
 <tr>
-  <td><input type="number" max="9" min="1" size="1" id="H4" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="H5" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="H6" value=""></td>
+  <td><input type="number" max="9" min="1" id="H4" value=""></td>
+  <td><input type="number" max="9" min="1" id="H5" value=""></td>
+  <td><input type="number" max="9" min="1" id="H6" value=""></td>
 </tr>
 <tr>
-  <td><input type="number" max="9" min="1" size="1" id="I4" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="I5" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="I6" value=""></td>
+  <td><input type="number" max="9" min="1" id="I4" value=""></td>
+  <td><input type="number" max="9" min="1" id="I5" value=""></td>
+  <td><input type="number" max="9" min="1" id="I6" value=""></td>
 </tr>
 </tbody></table></td><td><table style="background-color:gray;"><tbody><tr>
-  <td><input type="number" max="9" min="1" size="1" id="G7" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="G8" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="G9" value=""></td>
+  <td><input type="number" max="9" min="1" id="G7" value=""></td>
+  <td><input type="number" max="9" min="1" id="G8" value=""></td>
+  <td><input type="number" max="9" min="1" id="G9" value=""></td>
 </tr>
 <tr>
-  <td><input type="number" max="9" min="1" size="1" id="H7" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="H8" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="H9" value=""></td>
+  <td><input type="number" max="9" min="1" id="H7" value=""></td>
+  <td><input type="number" max="9" min="1" id="H8" value=""></td>
+  <td><input type="number" max="9" min="1" id="H9" value=""></td>
 </tr>
 <tr>
-  <td><input type="number" max="9" min="1" size="1" id="I7" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="I8" value=""></td>
-  <td><input type="number" max="9" min="1" size="1" id="I9" value=""></td>
+  <td><input type="number" max="9" min="1" id="I7" value=""></td>
+  <td><input type="number" max="9" min="1" id="I8" value=""></td>
+  <td><input type="number" max="9" min="1" id="I9" value=""></td>
 </tr>
 </tbody></table></td></tr>
 </tbody></table></div>

@@ -21,8 +21,8 @@ solveButton.addEventListener("click", () => {
         let st = new Date();
         let sol = solve_from_array(puzzle);
         let et = new Date();
-        if (!sol){
-            alert("No solution found!!\n *** Input may be invalid ***");
+        if (!sol || sol.includes(0)){
+            solutionDiv.innerHTML = "<strong>No solution found; Input may be invalid.</strong>";
             return;
         }
         setPuzzle(sol);
