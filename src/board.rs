@@ -89,12 +89,13 @@ impl Board {
     }
 
     pub fn find_solution(&mut self, index: usize) -> bool {
-        let row = index / 9;
-        let col = index % 9;
-
         if index == 81 {
             return true;
         }
+
+        let row = index / 9;
+        let col = index % 9;
+
         if self.is_filled(row, col) {
             return self.find_solution(index + 1)
         }
