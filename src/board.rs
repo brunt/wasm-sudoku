@@ -11,7 +11,11 @@ pub struct Board {
 #[wasm_bindgen]
 pub fn solve_from_array(input: Vec<u32>) -> Vec<u32> {
     let mut board = Board::new_with_values(input).unwrap_or(Board::new());
-    board.find_solution(0);
+    let mut tree = BTreeSet::new();
+    for i in 1..10 as u32 {
+        tree.insert(i);
+    }
+    board.find_solution(0, tree);
     board.show()
 }
 
@@ -40,30 +44,16 @@ impl Board {
         true
     }
 
-    fn get_options_for_cell(&self, row: usize, col: usize) -> BTreeSet<u32> {
-        let mut options = BTreeSet::new();
-        for i in 1..10 as u32 {
-            options.insert(i);
-        }
-        self.remove_column_options(col, &mut options);
-        self.remove_row_options(row, &mut options);
-        self.remove_box_options(row, col, &mut options);
+    fn get_options_for_cell(&self, row: usize, col: usize, mut options: BTreeSet<u32>) -> BTreeSet<u32> {
+        self.remove_options(row, col, &mut options);
         options
     }
 
-    fn remove_column_options(&self, col: usize, options: &mut BTreeSet<u32>) {
-        for i in 0..9 {
-            options.remove(&self.squares[i][col]);
-        }
-    }
-
-    fn remove_row_options(&self, row: usize, options: &mut BTreeSet<u32>) {
+    fn remove_options(&self, row: usize, col: usize, options: &mut BTreeSet<u32>) {
         for i in 0..9 {
             options.remove(&self.squares[row][i]);
+            options.remove(&self.squares[i][col]);
         }
-    }
-
-    fn remove_box_options(&self, row: usize, col: usize, options: &mut BTreeSet<u32>) {
         let box_row = row - row % 3 as usize;
         let box_col = col - col % 3 as usize;
         for i in 0..3 {
@@ -77,7 +67,7 @@ impl Board {
         self.squares[row][col] = 0 as u32;
     }
 
-    fn find_solution(&mut self, index: usize) -> bool {
+    fn find_solution(&mut self, index: usize, options: BTreeSet<u32>) -> bool {
         if index == 81 {
             return true;
         }
@@ -86,12 +76,12 @@ impl Board {
         let col = index % 9;
 
         if self.is_filled(row, col) {
-            return self.find_solution(index + 1)
+            return self.find_solution(index + 1, options)
         }
-        let options = self.get_options_for_cell(row, col);
-        for i in options.iter() {
+        let mut ops = self.get_options_for_cell(row, col, options.clone());
+        for i in ops.iter() {
             self.squares[row][col] = i.to_owned() as u32;
-            if self.find_solution(index + 1) {
+            if self.find_solution(index + 1, options.clone()) {
                 return true;
             }
         }
@@ -170,7 +160,11 @@ mod tests {
             3,4,2,1,8,9,7,6,5
         ];
         let board = Board::new_with_values(cell_vals).unwrap();
-        let options = board.get_options_for_cell(1, 3);
+        let mut tree = BTreeSet::new();
+        for i in 1..10 {
+            tree.insert(i);
+        }
+        let options = board.get_options_for_cell(1, 3, tree);
         assert_eq!(options.contains(&9), true);
         assert_eq!(options.contains(&0), false);
     }
