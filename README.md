@@ -10,5 +10,6 @@ Solve any sudoku puzzle using javascript and webassembly.
 * from inside the www folder, run `npm run start` or `npm run build`
 
 ### TODOs:
-* performance profiling (can we do better than std::collections::HashSet?)
+* performance profiling (can we do better than std::collections::BTreeSet?)
 * styling
+* alternative algorithms
