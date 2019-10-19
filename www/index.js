@@ -10,12 +10,16 @@ document.getElementById("pick").addEventListener("click", () => {
     solutionDiv.innerHTML = "";
 });
 
+document.getElementById("reset").addEventListener("click", () => {
+   resetPuzzle();
+});
+
 solveButton.addEventListener("click", () => {
     solutionDiv.innerHTML = "<strong>Solving ...</strong>\n";
     setTimeout(() => {
         let puzzle = readPuzzle();
         if (!puzzle || puzzle.length < 81){
-            alert("Invalid Puzzle!!");
+            solutionDiv.innerText = "Invalid Puzzle!!";
             return;
         }
         let st = new Date();
