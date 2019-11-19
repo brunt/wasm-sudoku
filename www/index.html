@@ -4,76 +4,27 @@
     <meta charset="UTF-8">
     <title>Sudoku Puzzle Solver</title>
     <script src="./bootstrap.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <style>
-        body {
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        p {
-            font-weight: bold;
-            font-size: 2em;
-        }
-
-        #pick {
-            font-size: .85em;
-            display: inline;
-            color: blue;
-            cursor: pointer;
-            padding-bottom: 1em;
-            float: left;
-            user-select: none;
-        }
-
-        #reset {
-            font-size: .85em;
-            display: inline;
-            color: blue;
-            cursor: pointer;
-            padding-bottom: 1em;
-            float: right;
-            user-select: none;
-        }
-
-        #solve {
-            font-size: 1em;
-            font-weight: bold;
-            margin: 1em;
-        }
-
-        input {
-            width: 2em;
-            height: 2em;
-        }
-
-        td {
-            /*border: 1px;*/
-            margin: 0px;
-            padding: 0px;
-            /*text-align: center;*/
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 </head>
 <body>
-<p>Sudoku Puzzle Solver</p>
+<h1>Sudoku Puzzle Solver</h1>
 <div>
-    <div id="pick">Use a random preselected puzzle</div>
+    <div id="pick">Random puzzle</div>
     <div id="reset">Clear puzzle</div>
     <div id="puzzleInput" class="content-center">
-        <table style="background-color:black;">
+        <table id="outer-table">
             <tbody>
             <tr>
                 <td>
-                    <table style="background-color:gray;">
+                    <table class="inner-table">
                         <tbody>
                         <tr>
                             <td><input type="number" max="9" min="1" id="A1" value=""></td>
@@ -94,7 +45,7 @@
                     </table>
                 </td>
                 <td>
-                    <table style="background-color:gray;">
+                    <table class="inner-table">
                         <tbody>
                         <tr>
                             <td><input type="number" max="9" min="1" id="A4" value=""></td>
@@ -115,7 +66,7 @@
                     </table>
                 </td>
                 <td>
-                    <table style="background-color:gray;">
+                    <table class="inner-table">
                         <tbody>
                         <tr>
                             <td><input type="number" max="9" min="1" id="A7" value=""></td>
@@ -138,7 +89,7 @@
             </tr>
             <tr>
                 <td>
-                    <table style="background-color:gray;">
+                    <table class="inner-table">
                         <tbody>
                         <tr>
                             <td><input type="number" max="9" min="1" id="D1" value=""></td>
@@ -159,7 +110,7 @@
                     </table>
                 </td>
                 <td>
-                    <table style="background-color:gray;">
+                    <table class="inner-table">
                         <tbody>
                         <tr>
                             <td><input type="number" max="9" min="1" id="D4" value=""></td>
@@ -180,7 +131,7 @@
                     </table>
                 </td>
                 <td>
-                    <table style="background-color:gray;">
+                    <table class="inner-table">
                         <tbody>
                         <tr>
                             <td><input type="number" max="9" min="1" id="D7" value=""></td>
@@ -203,7 +154,7 @@
             </tr>
             <tr>
                 <td>
-                    <table style="background-color:gray;">
+                    <table class="inner-table">
                         <tbody>
                         <tr>
                             <td><input type="number" max="9" min="1" id="G1" value=""></td>
@@ -224,7 +175,7 @@
                     </table>
                 </td>
                 <td>
-                    <table style="background-color:gray;">
+                    <table class="inner-table">
                         <tbody>
                         <tr>
                             <td><input type="number" max="9" min="1" id="G4" value=""></td>
@@ -245,7 +196,7 @@
                     </table>
                 </td>
                 <td>
-                    <table style="background-color:gray;">
+                    <table class="inner-table">
                         <tbody>
                         <tr>
                             <td><input type="number" max="9" min="1" id="G7" value=""></td>

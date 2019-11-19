@@ -1,0 +1,61 @@
+body {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+}
+
+#pick {
+    font-size: .85em;
+    display: inline;
+    color: blue;
+    cursor: pointer;
+    padding-bottom: 1em;
+    float: left;
+    user-select: none;
+}
+#reset {
+    font-size: .85em;
+    display: inline;
+    color: blue;
+    cursor: pointer;
+    padding-bottom: 1em;
+    float: right;
+    user-select: none;
+}
+#solve {
+    font-size: 1em;
+    font-weight: bold;
+    margin: 1em;
+}
+
+input {
+    width: 2em;
+    height: 2em;
+}
+
+td {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 2em;
+}
+
+#outer-table {
+    background-color: black;
+}
+.inner-table {
+    background-color: gray;
+}
