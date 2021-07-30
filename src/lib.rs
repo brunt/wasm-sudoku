@@ -1,17 +1,16 @@
-use itertools::Itertools;
+use std::collections::BTreeSet;
 use std::iter::Iterator;
 use wasm_bindgen::prelude::*;
-use std::collections::BTreeSet;
 
 pub struct Board {
-    pub squares: Vec<Vec<u32>>
+    pub squares: Vec<Vec<u32>>,
 }
 
 #[wasm_bindgen]
 pub fn solve_from_array(input: Vec<u32>) -> Vec<u32> {
     let mut board = Board::new_with_values(input).unwrap_or_else(|_| Board::new());
     let mut tree = BTreeSet::new();
-    for i in 1..10 as u32 {
+    for i in 1..10_u32 {
         tree.insert(i);
     }
     board.find_solution(0, tree);
@@ -43,7 +42,12 @@ impl Board {
         true
     }
 
-    fn get_options_for_cell(&self, row: usize, col: usize, mut options: BTreeSet<u32>) -> BTreeSet<u32> {
+    fn get_options_for_cell(
+        &self,
+        row: usize,
+        col: usize,
+        mut options: BTreeSet<u32>,
+    ) -> BTreeSet<u32> {
         self.remove_options(row, col, &mut options);
         options
     }
@@ -53,8 +57,8 @@ impl Board {
             options.remove(&self.squares[row][i]);
             options.remove(&self.squares[i][col]);
         }
-        let box_row = row - row % 3 as usize;
-        let box_col = col - col % 3 as usize;
+        let box_row = row - row % 3_usize;
+        let box_col = col - col % 3_usize;
         for i in 0..3 {
             for j in 0..3 {
                 options.remove(&self.squares[box_row + i][box_col + j]);
@@ -63,7 +67,7 @@ impl Board {
     }
 
     fn clear_cell(&mut self, row: usize, col: usize) {
-        self.squares[row][col] = 0 as u32;
+        self.squares[row][col] = 0_u32;
     }
 
     fn find_solution(&mut self, index: usize, options: BTreeSet<u32>) -> bool {
@@ -75,7 +79,7 @@ impl Board {
         let col = index % 9;
 
         if self.is_filled(row, col) {
-            return self.find_solution(index + 1, options)
+            return self.find_solution(index + 1, options);
         }
         let ops = self.get_options_for_cell(row, col, options.clone());
         for i in ops.iter() {
@@ -108,7 +112,7 @@ mod tests {
         assert_eq!(board.is_filled(0, 0), false);
         let mut board2 = Board::new();
         board2.squares[1][4] = 3;
-        assert_eq!(board2.is_filled(1,4), true)
+        assert_eq!(board2.is_filled(1, 4), true)
     }
 
     #[test]
@@ -119,7 +123,7 @@ mod tests {
         }
         let board = Board::new_with_values(input).unwrap();
         assert_eq!(board.squares[5][4], 49);
-
+        #[rustfmt::skip]
         let cell_vals = vec![
             2,9,6,3,1,8,5,7,4,
             5,8,4,9,7,2,6,1,3,
@@ -147,6 +151,7 @@ mod tests {
 
     #[test]
     fn test_get_option_for_cell() {
+        #[rustfmt::skip]
         let cell_vals = vec![
             2,9,6,3,1,8,5,7,4,
             5,8,4,0,7,2,6,1,3,
@@ -170,6 +175,7 @@ mod tests {
 
     #[test]
     fn test_find_solution() {
+        #[rustfmt::skip]
         let cell_vals = vec![
             2,9,6,0,0,0,5,7,4,
             5,8,4,0,0,0,6,1,3,
@@ -181,6 +187,7 @@ mod tests {
             8,5,9,7,0,4,1,3,2,
             3,4,2,1,8,0,7,0,5
         ];
+        #[rustfmt::skip]
         let solution =  vec![
             2,9,6,3,1,8,5,7,4,
             5,8,4,9,7,2,6,1,3,
